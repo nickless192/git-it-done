@@ -19,7 +19,8 @@ var getRepoIssues = function(repo) {
             });
         }
         else {
-            alert("There was a problem with your request!")
+            // alert("There was a problem with your request!");
+            document.location.replace("./index.html");
         }
     })
     // console.log(repo);
@@ -29,9 +30,13 @@ var getRepoIssues = function(repo) {
 var getRepoName = function() {
     var queryString = document.location.search;
     var repoName = queryString.split("=")[1];
-    // console.log(repoName);
-    getRepoIssues(repoName);
-    repoNameEl.textContent = repoName;
+
+    if (repoName) {
+        getRepoIssues(repoName);
+        repoNameEl.textContent = repoName;
+    } else {
+        document.location.replace("./index.html");
+    }
 
 };
 
